@@ -25,4 +25,21 @@ Grupo N6A
 
 #### Link al repositorio: https://github.com/mateoCosta1/Costa-Czarnievicz-Tenenbaum
 
-
+# Índice:
+- Definición del marco general de KANBAN
+- Primera versión del Proceso de Ingeniería
+    - Definition of Done
+    - Definición de roles del equipo
+- Mantenimiento del repositorio
+- Análisis de deuda técnica    
+    - Clasificación de las issues
+    - Resultados del análisis del código estático
+        - ReSharper: Testeo del código del backend realizado con C#
+        - ESLint: Testeo del código del frontend realizado con angular y typescript
+- Resumen de las issues
+- Registro de esfuerzo
+- Retrospectiva
+- Bibliografía 
+- Anexo:
+    - Report de Resharper(Backend)
+    - Report de ESLint (Frontend)
