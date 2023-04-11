@@ -1,9 +1,9 @@
-<center><u>Universidad ORT Uruguay
-Facultad de Ingeniería</u></center>
+Universidad Ort Uruguay, Facultad de Ingeniería
+
 # Informe Avance 1
 
 
-##<center>Descripción del trabajo realizado para el Obligatorio 1 de Ingeniería de Software Ágil 2</center>
+## Descripción del trabajo realizado para el Obligatorio 1 de Ingeniería de Software Ágil 2
 
 
 
@@ -23,6 +23,6 @@ Grupo N6A
 
 
 
-####Link al repositorio: https://github.com/mateoCosta1/Costa-Czarnievicz-Tenenbaum
+#### Link al repositorio: https://github.com/mateoCosta1/Costa-Czarnievicz-Tenenbaum
 
 
