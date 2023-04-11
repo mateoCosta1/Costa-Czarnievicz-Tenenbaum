@@ -16,7 +16,7 @@ Grupo N6A
 
 - Mateo Costa - 232870
 
-- Tutor/es: Alvaro Ortaz
+- Tutor/es: Álvaro Ortas
 
 11 de Abril 2023
 
@@ -37,9 +37,20 @@ Grupo N6A
         - ReSharper: Testeo del código del backend realizado con C#
         - ESLint: Testeo del código del frontend realizado con angular y typescript
 - [Resumen de las issues](/Informe%20Avance%201/Resumen%20de%20las%20issues.pdf)
-- Registro de esfuerzo
-- Retrospectiva
-- Bibliografía 
-- Anexo:
-    - Report de Resharper(Backend)
+- [Registro de esfuerzo](/Informe%20Avance%201/Registro%20de%20esfuerzo.pdf)
+- [Retrospectiva](/Informe%20Avance%201/Retrospectiva.pdf)
+- [Bibliografía](#bibliografia) 
+- [Anexo](#anexo)
+    - Report de ReSharper(Backend)
     - Report de ESLint (Frontend)
+
+
+## Bibliografía:<a name="bibliografia"></a>
+
+- Material brindado por los docentes mediante las clases, aulas y microsoft teams.
+- ESLint: https://eslint.org/docs/latest/ 
+- ReSharper: https://www.jetbrains.com/resharper/documentation/documentation.html 
+## Anexo:<a name="anexo"></a>
+ - [Report de ReSharper:](/Obligatorio/codigo/ArenaGestor/reportReSharper.xml) 
+ - [Rerport de ESLint:](/Obligatorio/codigo/ArenaGestorFront/reportESLint.txt)
+
