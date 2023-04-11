@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended"
+      ],
+      "plugins": [
+        "import",
+        "jsdoc",
+        "eslint-plugin-import",
+        "eslint-plugin-jsdoc"
+      ],
+      "rules": {
+        "no-console": "warn",
+        "no-unused-vars": "warn",
+        "no-undef": "error",
+        "semi": "warn",
+        "quotes": ["warn", "single"],
+        "new-cap": ["error", { "newIsCap": true }],
+        "no-underscore-dangle": "warn",
+        "camelcase": "warn",
+        "eslint-plugin/report-message-format": ["error", "{category}: {message}", {"severity": "error", "category": "TypeScript"}]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "plugins": [
+        "@angular-eslint/template"
+      ]
+    }
+  ]
+}
