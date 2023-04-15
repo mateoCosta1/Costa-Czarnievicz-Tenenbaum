@@ -28,7 +28,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore **/*.{csproj, cs}
 
     - name: Build
-      run: dotnet build **/*.csproj --configuration Release --no-restore
+      run: dotnet build **/*.{csproj, cs} --configuration Release --no-restore
