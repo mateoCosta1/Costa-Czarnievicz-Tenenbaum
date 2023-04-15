@@ -28,7 +28,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Restore Dependencies
-      run: dotnet restore Obligatorio/codigo/ArenaGestor/*.sln
+      run: dotnet restore Obligatorio/codigo/ArenaGestor/ArenaGestor.sln
 
     - name: Build
-      run: dotnet build Obligatorio/codigo/ArenaGestor/*.sln --configuration Release
+      run: dotnet build Obligatorio/codigo/ArenaGestor/ArenaGestor.sln --configuration Release
