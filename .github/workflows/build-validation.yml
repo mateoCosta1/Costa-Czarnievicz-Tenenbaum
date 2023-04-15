@@ -5,15 +5,15 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-    - '**.cs'
-    - '**.csproj'
-
+     - 'Obligatorio/codigo/ArenasGestor/**.cs'
+     - 'Obligatorio/codigo/ArenasGestor/**/*.csproj'
+     - 'Obligatorio/codigo/ArenasGestor/*.sln'
+     
 env:
   DOTNET_VERSION: '5.0' # The .NET SDK version to use
 
 jobs:
   build:
-
     name: build-${{matrix.os}}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -27,8 +27,8 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
-    - name: Restore dependencies
-      run: dotnet restore **/*.{csproj, cs}
+    - name: Restore Dependencies
+      run: dotnet restore Obligatorio/codigo/ArenasGestor/*.sln
 
     - name: Build
-      run: dotnet build **/*.{csproj, cs} --configuration Release --no-restore
+      run: dotnet build Obligatorio/codigo/ArenasGestor/*.sln --configuration Release
