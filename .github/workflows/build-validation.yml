@@ -3,7 +3,7 @@ name: build
 on:
   push:
   pull_request:
-    branches: [ main ]
+    branches: [ develop, main ]
     paths:
      - 'Obligatorio/codigo/ArenaGestor/**.cs'
      - 'Obligatorio/codigo/ArenaGestor/**/*.csproj'
