@@ -5,9 +5,9 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-     - 'Obligatorio/codigo/ArenasGestor/**.cs'
-     - 'Obligatorio/codigo/ArenasGestor/**/*.csproj'
-     - 'Obligatorio/codigo/ArenasGestor/*.sln'
+     - 'Obligatorio/codigo/ArenaGestor/**.cs'
+     - 'Obligatorio/codigo/ArenaGestor/**/*.csproj'
+     - 'Obligatorio/codigo/ArenaGestor/*.sln'
      
 env:
   DOTNET_VERSION: '5.0' # The .NET SDK version to use
@@ -28,7 +28,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Restore Dependencies
-      run: dotnet restore Obligatorio/codigo/ArenasGestor/*.sln
+      run: dotnet restore Obligatorio/codigo/ArenaGestor/*.sln
 
     - name: Build
-      run: dotnet build Obligatorio/codigo/ArenasGestor/*.sln --configuration Release
+      run: dotnet build Obligatorio/codigo/ArenaGestor/*.sln --configuration Release
