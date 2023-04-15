@@ -1,9 +1,12 @@
 ﻿using ArenaGestor.API.Controllers;
+using ArenaGestor.API.Filters;
 using ArenaGestor.APIContracts.Security;
 using ArenaGestor.BusinessInterface;
+using ArenaGestor.Domain;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -62,5 +65,21 @@ namespace ArenaGestor.APITest
             mock.VerifyAll();
             Assert.AreEqual(StatusCodes.Status200OK, statusCode);
         }
+
+        [TestMethod]
+        public void Logout_ShouldHaveCorrectAuthorizationRoles()
+        {
+            // Arrange
+            var methodInfo = typeof(SecurityController).GetMethod(nameof(SecurityController.Logout));
+
+            // Act
+            var authAttributes = methodInfo.GetCustomAttributes(typeof(AuthorizationFilter), true);
+            var authFilter = authAttributes[0] as AuthorizationFilter;
+
+            // Assert
+            CollectionAssert.AreEquivalent(new[] { RoleCode.Administrador, RoleCode.Vendedor, RoleCode.Acomodador, RoleCode.Espectador, RoleCode.Artista }, authFilter.roles);
+        }
     }
 }
+
+
