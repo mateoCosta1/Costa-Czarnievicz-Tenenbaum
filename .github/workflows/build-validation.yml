@@ -28,7 +28,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Obligatorio/codigo/ArenaGestor
 
     - name: Build
       run: dotnet build Obligatorio/codigo/ArenaGestor --configuration Release --no-restore
