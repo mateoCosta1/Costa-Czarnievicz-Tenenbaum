@@ -28,4 +28,4 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Build
-      run: dotnet build Obligatorio\codigo\ArenaGestor 
+      run: dotnet build Obligatorio/codigo/ArenaGestor 
