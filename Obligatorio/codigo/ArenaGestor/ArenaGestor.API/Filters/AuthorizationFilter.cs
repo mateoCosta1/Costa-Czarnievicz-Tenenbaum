@@ -11,7 +11,7 @@ namespace ArenaGestor.API.Filters
     public class AuthorizationFilter : Attribute, IAuthorizationFilter
     {
 
-        private readonly RoleCode[] roles;
+        public readonly RoleCode[] roles;
 
         private ISecurityService _securityService;
         public AuthorizationFilter(params RoleCode[] roles)
