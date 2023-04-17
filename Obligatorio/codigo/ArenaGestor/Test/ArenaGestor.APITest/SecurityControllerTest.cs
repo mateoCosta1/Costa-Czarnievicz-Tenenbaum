@@ -69,14 +69,11 @@ namespace ArenaGestor.APITest
         [TestMethod]
         public void Logout_ShouldHaveCorrectAuthorizationRoles()
         {
-            // Arrange
             var methodInfo = typeof(SecurityController).GetMethod(nameof(SecurityController.Logout));
 
-            // Act
             var authAttributes = methodInfo.GetCustomAttributes(typeof(AuthorizationFilter), true);
             var authFilter = authAttributes[0] as AuthorizationFilter;
 
-            // Assert
             CollectionAssert.AreEquivalent(new[] { RoleCode.Administrador, RoleCode.Vendedor, RoleCode.Acomodador, RoleCode.Espectador, RoleCode.Artista }, authFilter.roles);
         }
     }
