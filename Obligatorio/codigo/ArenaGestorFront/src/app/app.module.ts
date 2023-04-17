@@ -50,6 +50,7 @@ import { ProtagonistBandsComponent } from './routes/protagonist/protagonist.band
 import { ProtagonistSoloistsComponent } from './routes/protagonist/protagonist.soloists.component';
 import { ProtagonistBandComponent } from './routes/protagonist/protagonist.band.component';
 import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.soloist.component';
+import { GenderDeleteComponent } from './routes/genders/gender-delete.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.so
     ProtagonistBandsComponent,
     ProtagonistSoloistsComponent,
     ProtagonistBandComponent,
-    ProtagonistSoloistComponent
+    ProtagonistSoloistComponent,
+    GenderDeleteComponent
   ],
   imports: [
     CommonModule,

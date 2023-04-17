@@ -1,0 +1,16 @@
+<div class="row justify-content-md-center">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                {{mode}} género
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    Esta seguro que desea eliminar el genero {{model.genderId}}?
+                </div>
+                <button class="btn btn-primary btn-small" (click)="Confirmar()">Confirmar</button>
+                <a routerLink='/administracion/generos' class="btn btn-danger btn-small ms-1" role="button">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

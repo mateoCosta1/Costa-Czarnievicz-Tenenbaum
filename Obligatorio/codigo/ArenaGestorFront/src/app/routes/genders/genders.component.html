@@ -12,6 +12,7 @@
     <thead>
         <tr>
             <th></th>
+            <th></th>
             <th scope="col">Id</th>
             <th scope="col">Nombre</th>
         </tr>
@@ -21,6 +22,10 @@
             <td>
                 <a type="button" class="btn btn-warning btn-sm"
                     routerLink="/administracion/generos/editar/{{gender.genderId}}" role="button">Editar</a>
+            </td>
+            <td>
+                <a type="button" class="btn btn-danger btn-sm"
+                    routerLink="/administracion/generos/eliminar/{{gender.genderId}}" role="button">Eliminar</a>
             </td>
             <td scope="col">{{gender.genderId}}</td>
             <td scope="col">{{gender.name}}</td>
