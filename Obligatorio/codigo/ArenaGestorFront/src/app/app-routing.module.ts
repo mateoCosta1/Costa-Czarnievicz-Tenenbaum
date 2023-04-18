@@ -35,6 +35,7 @@ import { ProtagonistBandsComponent } from './routes/protagonist/protagonist.band
 import { ProtagonistSoloistsComponent } from './routes/protagonist/protagonist.soloists.component';
 import { ProtagonistBandComponent } from './routes/protagonist/protagonist.band.component';
 import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.soloist.component';
+import { GenderDeleteComponent } from './routes/genders/gender-delete.component';
 
 const routes: Routes = [
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'administracion/generos', component: GendersComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/generos/insertar', component: GenderInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/generos/editar/:id', component: GenderUpdateComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
+  { path: 'administracion/generos/eliminar/:id', component: GenderDeleteComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/artistas', component: ArtistComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/artistas/insertar', component: ArtistInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/artistas/editar/:id', component: ArtistUpdateComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
