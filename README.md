@@ -18,7 +18,7 @@ Grupo N6A
 
 - Tutor/es: Álvaro Ortas
 
-Informe avance 1 - 11 de Abril 2023
+Informe avance 1 - 11 de Abril 2023 <br>
 Informe avance 2 - 18 de Abril 2023 
 
 
@@ -66,7 +66,7 @@ Informe avance 2 - 18 de Abril 2023
 - [Explicación del tablero y su vínculo con el proceso de ingeniería](/InformeAvance%202/Explicacion%20del%20tablero%20y%20su%20vinculo%20con%20el%20proceso%20de%20ingenieria.pdf)
     - Explicación del tablero KANBAN Sustentable
     - Vínculo del tablero con el proceso de ingeniería:
-- [Configuración del pipeline y su vínculo con el tablero](/InformeAvance%202/Configuracion%20del%20pipeline%20y%20su%20vinculo%20con%20el%20tablero.pdf)
+- [Configuración del pipeline y su vínculo con el tablero](/InformeAvance%202/Configuracion%20del%20pipeline.pdf)
 - [Justificación de los bugs seleccionados en función de la clasificación proporcionada](/InformeAvance%202/Justificacion%20de%20los%20bugs%20seleccionados%20.pdf)
     - Justificación de la selección de bugs
     - Justificación de la prioridad asignada a esos bugs
@@ -85,6 +85,7 @@ Informe avance 2 - 18 de Abril 2023
 - [Bibliografía](#bibliografia) 
 
 <hr>
+
 ## Herramientas:<a name="herramientas"></a>
 - Metroretro: https://metroretro.io/
 
