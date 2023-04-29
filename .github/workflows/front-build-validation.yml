@@ -15,6 +15,10 @@ jobs:
         with:
           node-version: "16.13.0"
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+        working-directory: ./Obligatorio/codigo/ArenaGestorFront/
+
       - name: Cache node modules
         id: cache-nodemodules
         uses: actions/cache@v2
@@ -36,6 +40,7 @@ jobs:
           #  if cache hits the skip this step.
         run: npm ci
         working-directory: ./Obligatorio/codigo/ArenaGestorFront/
+
       - name: Build
-        run: npm run build --prod
+        run: ng build --prod
         working-directory: ./Obligatorio/codigo/ArenaGestorFront/
