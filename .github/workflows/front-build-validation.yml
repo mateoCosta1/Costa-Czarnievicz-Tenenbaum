@@ -40,6 +40,10 @@ jobs:
           #  if cache hits the skip this step.
         run: npm ci
         working-directory: ./Obligatorio/codigo/ArenaGestorFront/
+      
+      - name: Install dev dependencies
+        run: npm install @angular-devkit/build-angular
+        working-directory: ./Obligatorio/codigo/ArenaGestorFront/
 
       - name: Build
         run: ng build --prod
