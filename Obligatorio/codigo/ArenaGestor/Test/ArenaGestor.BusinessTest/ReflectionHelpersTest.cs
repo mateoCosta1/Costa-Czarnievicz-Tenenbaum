@@ -16,7 +16,6 @@ namespace ArenaGestor.BusinessTest
         }
 
         [TestMethod]
-        [Ignore]
         public void GetAllMethods()
         {
             ReflectionHelpers helpers = new ReflectionHelpers();
@@ -25,7 +24,6 @@ namespace ArenaGestor.BusinessTest
         }
 
         [TestMethod]
-        [Ignore]
         public void GetMethodNull()
         {
             ReflectionHelpers helpers = new ReflectionHelpers();
@@ -34,7 +32,6 @@ namespace ArenaGestor.BusinessTest
         }
 
         [TestMethod]
-        [Ignore]
         public void GetMethod()
         {
             ReflectionHelpers helpers = new ReflectionHelpers();
