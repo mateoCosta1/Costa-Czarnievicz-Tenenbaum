@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArenaGestor.Extensions", "ArenaGestor.Extensions\ArenaGestor.Extensions.csproj", "{0AA039C0-644F-4699-9CB3-E663005CB48F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecflowTest", "SpecflowTest\SpecflowTest.csproj", "{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +102,10 @@ Global
 		{0AA039C0-644F-4699-9CB3-E663005CB48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AA039C0-644F-4699-9CB3-E663005CB48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AA039C0-644F-4699-9CB3-E663005CB48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{A3A12002-C936-401A-A239-CFC045DE2B72} = {7BF10460-B06E-46D9-BB86-DCC3C938D074}
 		{B7B86F7A-B5CC-4EEC-9271-20CAA6F200B3} = {7BF10460-B06E-46D9-BB86-DCC3C938D074}
 		{8F39BAC0-EE53-4A7A-99DA-AFF0AB6634A2} = {7BF10460-B06E-46D9-BB86-DCC3C938D074}
+		{A57E0F12-6EF1-41AE-AAA4-CBFE10B4700E} = {7BF10460-B06E-46D9-BB86-DCC3C938D074}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E6419C9-0EC9-4328-A875-712521D58D37}
