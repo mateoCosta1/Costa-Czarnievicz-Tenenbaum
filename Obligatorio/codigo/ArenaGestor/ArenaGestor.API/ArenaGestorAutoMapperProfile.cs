@@ -5,6 +5,7 @@ using ArenaGestor.APIContracts.Country;
 using ArenaGestor.APIContracts.Gender;
 using ArenaGestor.APIContracts.Roles;
 using ArenaGestor.APIContracts.Security;
+using ArenaGestor.APIContracts.Snack;
 using ArenaGestor.APIContracts.Soloist;
 using ArenaGestor.APIContracts.Ticket;
 using ArenaGestor.APIContracts.Users;
@@ -143,6 +144,19 @@ namespace ArenaGestor.API
             CreateMap<Country, CountryResultDto>();
             CreateMap<ConcertUpdateCountryDto, Country>();
             CreateMap<ConcertUpdateLocationDto, Location>();
+
+            CreateMap<PurchaseSnacksDto, SnackPurchase>();
+            CreateMap<SnackItemDto, (Snack, int)>()
+                .ForMember(x => x.Item1, f => f.MapFrom(y => new Snack() { SnackId=y.snackId}))
+                .ForMember(x => x.Item2, f => f.MapFrom(y => y.amount));
+            CreateMap<SnackPurchase, PurchaseSnacksResponseDto>()
+                .ForMember(x => x.totalPrice, f => f.MapFrom(y => y.Snacks.Sum(sp => sp.Snack.Price * sp.Amount)));
+            CreateMap< SnackPurchaseItem, SnackPurchaseResponseDto >()
+                .ForMember(x => x.priceByUnit, f => f.MapFrom(y => y.Snack.Price))
+                .ForMember(x => x.snackId, f => f.MapFrom(y => y.Snack.SnackId))
+                .ForMember(x => x.amount, f => f.MapFrom(y => y.Amount))
+                .ForMember(x => x.totalSnackCost, f => f.MapFrom(y => y.Snack.Price * y.Amount));
+
         }
     }
 }

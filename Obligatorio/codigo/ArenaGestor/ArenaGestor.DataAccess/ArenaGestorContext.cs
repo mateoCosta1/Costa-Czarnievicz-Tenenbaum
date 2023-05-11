@@ -20,7 +20,8 @@ namespace ArenaGestor.DataAccess
         public DbSet<ArtistBand> ArtistBands { get; set; }
         public DbSet<ConcertProtagonist> ConcertProtagonists { get; set; }
         public DbSet<Country> Countrys { get; set; }
-
+        private DbSet<SnackPurchase> purchases { get; set; }
+        private DbSet<Snack> snacks { get; set; }
         public ArenaGestorContext(DbContextOptions options) : base(options)
         {
         }
@@ -45,6 +46,7 @@ namespace ArenaGestor.DataAccess
             modelBuilder.Entity<UserRole>().ToTable("RoleUser");
             modelBuilder.Entity<ArtistBand>().ToTable("ArtistBand");
             modelBuilder.Entity<ConcertProtagonist>().ToTable("ConcertProtagonist");
+            
 
             modelBuilder.Entity<Gender>(entity =>
             {
@@ -139,6 +141,17 @@ namespace ArenaGestor.DataAccess
                 .HasOne(cp => cp.Protagonist)
                 .WithMany(p => p.Concerts)
                 .HasForeignKey(c => c.MusicalProtagonistId);
+
+            modelBuilder.Entity<SnackPurchase>().ToTable("SnackPurchase");
+            modelBuilder.Entity<Snack>().ToTable("Snack");
+            modelBuilder.Entity<SnackPurchaseItem>().ToTable("SnackPurchaseItem");
+
+            modelBuilder.Entity<Snack>().HasKey(x => x.SnackId);
+            modelBuilder.Entity<SnackPurchase>().HasKey(x => x.TicketId);
+            modelBuilder.Entity<SnackPurchaseItem>().HasKey(x => x.Id);
+            
+
+            
         }
     }
 }
