@@ -22,6 +22,13 @@ export class BuysnacksComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.ticketId = params["ticketId"];
       console.log(params["ticketId"]);
+    });
+    this.GetData();
+  }
+
+  GetData() {
+    this.service.Get().subscribe(res => {
+      this.snackList = res
     })
   }
 
