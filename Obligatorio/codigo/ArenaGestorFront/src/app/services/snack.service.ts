@@ -28,4 +28,8 @@ export class SnackService {
     return this.http.delete(this.apiUrl + "/" + id.toString())
   }
 
+  buySnack(ticketId: String, snacks: Array<SnackResultSnackDto>){
+    return this.http.post<{ticketId: String, snacks:Array<SnackResultSnackDto>}>(this.apiUrl,{ticketId, snacks})
+  }
+
 }

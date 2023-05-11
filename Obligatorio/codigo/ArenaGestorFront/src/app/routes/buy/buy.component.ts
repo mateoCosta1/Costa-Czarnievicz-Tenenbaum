@@ -14,6 +14,7 @@ export class BuyComponent implements OnInit {
   selectedTourName: String = "";
   selectedId: Number = 0;
   amount : Number = 0;
+  ticketId: String = "";
 
   constructor(private toastr: ToastrService, private ticketService: TicketsService, private service: ConcertService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -32,9 +33,14 @@ export class BuyComponent implements OnInit {
     dto.concertId = this.selectedId
     this.ticketService.Shopping(dto).subscribe(res => {
       this.toastr.success("Ticket comprado con ID: " + res.ticketId)
+      this.ticketId = res.ticketId;
+      this.router.navigate(["/snacks/comprar/"+this.ticketId]);
+      console.log(this.ticketId);
     }, error => {
       this.toastr.error(error.error)
     })
   }
+
+
 
 }
