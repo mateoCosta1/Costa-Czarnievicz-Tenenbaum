@@ -1,4 +1,8 @@
-<h2>Compra tus snacks aqui!!!</h2>
+<div class="d-flex flex-row justify-content-between">
+    <div class="d-flex">
+        <h2>Compra tus snacks aqui!!!</h2>
+    </div>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -12,7 +16,7 @@
     <tbody>
         <tr *ngFor="let snack of snackList">
             <td>
-                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
                     data-bs-target="#addSnack" (click)="addSnack(snack.id)">Agregar</button>
                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                     data-bs-target="#addSnack" (click)="removeSnack(snack.id)">Quitar</button>

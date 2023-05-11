@@ -12,7 +12,6 @@ export class BuysnacksComponent implements OnInit {
   ticketId: String = "";
   snackList: Array<SnackResultSnackDto> = new Array<SnackResultSnackDto>();
   
-
   constructor(
     private service: SnackService, 
     private router: Router, 
