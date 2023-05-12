@@ -56,7 +56,7 @@ namespace SpecflowTest
             snackAmount2 = new() {Snack = snack2, Amount =3};
             purchase = new()
             {
-                TicketId = ticket.TicketId
+                TicketId = ticket.TicketId,
             };
         }
 
@@ -88,8 +88,8 @@ namespace SpecflowTest
         [Given(@"I have selected a quantity greater than (.*) for each selected snack")]
         public void GivenIHaveSelectedAQuantityGreaterThanForEachSelectedSnack(int p0)
         {
-            snackAmount1 = new() { Snack = snack1, Amount = 2 };
-            snackAmount2 = new() { Snack = snack2, Amount = 3 };
+            snackAmount1 = new() { Snack = snack1, Amount = p0+1 };
+            snackAmount2 = new() { Snack = snack2, Amount = p0+2 };
         }
 
         [When(@"I press the Confirm snack purchase button")]

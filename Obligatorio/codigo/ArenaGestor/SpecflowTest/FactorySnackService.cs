@@ -16,6 +16,7 @@ using System;
 using TechTalk.SpecFlow;
 using ArenaGestor.Domain;
 using ArenaGestor.DataAccessInterface;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 
 namespace SpecflowTest
 {
@@ -25,16 +26,16 @@ namespace SpecflowTest
         SnackService service;
         SnackController controller;
         DbContext context;
-
+        private readonly string databaseName= Guid.NewGuid().ToString();
         public FactorySnackService(Snack[] snacksInDatabase)
         {
-            dataAccess = new(CreateDataBase(snacksInDatabase));
+            dataAccess = new(CreateDataBase(snacksInDatabase,databaseName));
             service = new(dataAccess);
             controller = new(service);
         }
         public FactorySnackService(Snack[] snacksInDatabase, SnackPurchase[] purchasesInDatabase)
         {
-            dataAccess = new(CreateDataBase(snacksInDatabase));
+            dataAccess = new(CreateDataBase(snacksInDatabase,databaseName));
             foreach(var p in purchasesInDatabase)
             {
                 dataAccess.InsertSnackPurchase(p);
@@ -44,23 +45,27 @@ namespace SpecflowTest
         }
         public ISnackAppService CreateAppService()
         {
+            ReInitializeComponents();
             return controller;
         }
 
         public ISnackManagement GetDataAccess()
         {
+            ReInitializeComponents();
             return dataAccess;
         }
 
-        public void AddObjectToContext(object obj)
+        private void ReInitializeComponents()
         {
-            context.Entry(obj).State = EntityState.Added;
-            context.SaveChanges();
+            dataAccess = new(CreateDbContext(databaseName));
+            service = new(dataAccess);
+            controller = new(service);
         }
 
-        private DbContext CreateDataBase(Snack[] snacksInDatabase)
+        private DbContext CreateDataBase(Snack[] snacksInDatabase, string databaseName)
         {
-            context = CreateDbContext();
+            context = CreateDbContext(databaseName);
+
             foreach (var snack in snacksInDatabase)
             {
                 context.Add(snack);
@@ -69,19 +74,19 @@ namespace SpecflowTest
                 context.SaveChanges();
             }
             
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            
             return context;
         }
 
-        private DbContext CreateDbContext()
+        private DbContext CreateDbContext(string dbName)
         {
-            var dbName = Guid.NewGuid().ToString();
 
             var options = new DbContextOptionsBuilder<ArenaGestorContext>()
                 .UseInMemoryDatabase(databaseName: dbName)
                 .Options;
-
-            return new ArenaGestorContext(options);
+            var context = new ArenaGestorContext(options);
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            return context;
         }
     }
 }

@@ -1,5 +1,6 @@
 using ArenaGestor.APIContracts;
 using ArenaGestor.APIContracts.Snack;
+using ArenaGestor.DataAccessInterface;
 using ArenaGestor.Domain;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
@@ -15,21 +16,39 @@ namespace SpecflowTest.Steps
     {
         private ISnackAppService controller;
         private FactorySnackService factory;
+        private ISnackManagement dataAccess;
 
-        private Guid ticketId = new Guid();
+        private Guid ticketId;
         private Snack snackToDelete = new()
         {
             SnackId = 1,
             Description = "Delete",
             Price = 2
         };
+        private SnackPurchaseItem item;
 
         private SnackPurchase purchase;
         [Given(@"me encuentro en la pestaña de los snacks")]
         public void GivenMeEncuentroEnLaPestanaDeLosSnacks()
         {
+            ticketId = Guid.NewGuid();
+            item = new()
+            {
+                Snack = snackToDelete,
+                Amount = 1,
+
+            };
+            purchase = new SnackPurchase()
+            {
+                TicketId = ticketId,
+                Snacks = new List<SnackPurchaseItem>() { item }
+            };
             factory = new FactorySnackService(new[] { snackToDelete });
+
             controller = factory.CreateAppService();
+            
+            dataAccess = factory.GetDataAccess();
+            dataAccess.InsertSnackPurchase(purchase); 
         }
 
         [When(@"apreto el boton de Eliminar")]
@@ -50,7 +69,16 @@ namespace SpecflowTest.Steps
         [Then(@"las personas que compraron este snack pueden consumir las unidades que compraron")]
         public void ThenLasPersonasQueCompraronEsteSnackPuedenConsumirLasUnidadesQueCompraron()
         {
+            var purchaseFromDatabase = dataAccess.GetPurchaseById(ticketId);
+            AssertDeletedSnackIsPresent(purchaseFromDatabase);
+        }
 
+        private void AssertDeletedSnackIsPresent(SnackPurchase purchaseFromDatabase)
+        {
+            foreach(var item in purchaseFromDatabase.Snacks)
+            {
+                item.Snack.Should().NotBeNull();
+            }
         }
 
         [Then(@"los espectadores no pueden comprar de ahora en adelante unidades de este producto")]

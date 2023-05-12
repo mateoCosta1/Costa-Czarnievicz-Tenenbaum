@@ -63,32 +63,6 @@ namespace SpecflowTest.Steps
             CollectionAssert.AreEquivalent(expectedSnacks, snacksFromDatabase.ToArray());
         }
 
-        private ISnackAppService CreateAppService()
-        {
-            SnackManagement dataAccess = new(CreateDataBase());
-            SnackService service = new(dataAccess);
-            SnackController controller = new(service);
-            return controller;
-        }
-
-        private DbContext CreateDataBase()
-        {
-            var context = CreateDbContext();
-            context.Add(snack1);
-            context.Add(snack2);
-            context.SaveChanges();
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return context;
-        }
-        public DbContext CreateDbContext()
-        {
-            var dbName = Guid.NewGuid().ToString();
-
-            var options = new DbContextOptionsBuilder<ArenaGestorContext>()
-                .UseInMemoryDatabase(databaseName: dbName)
-                .Options;
-
-            return new ArenaGestorContext(options);
-        }
+        
     }
 }
