@@ -80,6 +80,20 @@ namespace ArenaGestor.Business
             return result.ToArray();
         }
 
-        
+        public ICollection<Snack> GetAllSnacks()
+        {
+            var snacksFromDatabase = snackPurchaseManager.GetAllSnacks();
+            return ConvertToCollection(snacksFromDatabase);
+        }
+
+        private ICollection<Snack> ConvertToCollection(IEnumerable<Snack> snacksFromDatabase)
+        {
+            List<Snack> result = new();
+            foreach(var snack in snacksFromDatabase) 
+            {
+                result.Add(snack);
+            }
+            return result;
+        }
     }
 }

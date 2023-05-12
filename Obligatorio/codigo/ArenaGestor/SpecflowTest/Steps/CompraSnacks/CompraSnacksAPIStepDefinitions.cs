@@ -24,7 +24,7 @@ namespace SpecflowTest.Steps.CompraSnacks
         private string noSelectedErrorMessage = "Tiene que seleccionar al menos un snack";
         private SnackItemDto snackDto1 = new()
         {
-            SnackId = 1,
+            Id = 1,
             Amount = 1,
         };
         private SnackPurchase snackPurchase;

@@ -12,5 +12,15 @@ namespace ArenaGestor.Domain
         public int Price { get; set; }
         public string Description { get; set; }
         public Snack() { }
+        public override bool Equals(object obj)
+        {
+            return obj is Snack other &&
+                other.SnackId==SnackId && other.Price==Price 
+                && other.Description.Equals(Description);
+        }
+        public override int GetHashCode()
+        {
+            return SnackId + Price + Description.GetHashCode();
+        }
     }
 }

@@ -9,14 +9,14 @@ namespace ArenaGestor.APIContracts.Snack
 {
     public class SnackItemDto
     {
-        public int SnackId { get; set; }
+        public int Id { get; set; }
         public int Amount { get; set; }
 
         public SnackPurchaseItem ToDomain()
         {
             return new SnackPurchaseItem
             {
-                Snack = new Domain.Snack() { SnackId = SnackId}
+                Snack = new Domain.Snack() { SnackId = Id}
                 ,Amount = Amount
             };
         }

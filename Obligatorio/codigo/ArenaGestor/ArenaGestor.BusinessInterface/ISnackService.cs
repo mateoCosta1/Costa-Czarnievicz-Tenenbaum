@@ -10,5 +10,6 @@ namespace ArenaGestor.BusinessInterface
     public interface ISnackService
     {
         public SnackPurchase PurchaseSnacks(SnackPurchase purchaseSnack);
+        public ICollection<Snack> GetAllSnacks();
     }
 }

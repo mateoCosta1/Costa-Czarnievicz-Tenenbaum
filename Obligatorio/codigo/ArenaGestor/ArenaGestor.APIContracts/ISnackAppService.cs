@@ -11,5 +11,6 @@ namespace ArenaGestor.APIContracts
     public interface ISnackAppService
     {
         IActionResult PostPurchaseSnacks(PurchaseSnacksDto purchase);
+        IActionResult GetAllSnacks();
     }
 }

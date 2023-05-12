@@ -27,6 +27,10 @@ namespace ArenaGestor.DataAccess.Managements
         public void InsertSnackPurchase(SnackPurchase purchase)
         {
             this.purchases.Add(purchase);
+            foreach(var item in purchase.Snacks)
+            {
+                this.context.Entry(item.Snack).State = EntityState.Unchanged; 
+            }
             this.context.SaveChanges();
         }
 
