@@ -11,7 +11,7 @@ export class SnacksComponent implements OnInit {
 
   snackList: Array<SnackResultSnackDto> = new Array<SnackResultSnackDto>();
   
-  snackToDelete: Number = 0;
+  snackToDelete: string = "";
 
   constructor(
     private toastr: ToastrService, 
@@ -28,7 +28,7 @@ export class SnacksComponent implements OnInit {
     })
   }
 
-  SetSnackToDelete(id: Number) {
+  SetSnackToDelete(id: string) {
     this.snackToDelete = id;
   }
 
