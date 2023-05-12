@@ -1,10 +1,16 @@
+using ArenaGestor.API.Controllers;
 using ArenaGestor.APIContracts;
 using ArenaGestor.APIContracts.Snack;
+using ArenaGestor.Business;
+using ArenaGestor.DataAccess.Managements;
+using ArenaGestor.DataAccess;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using TechTalk.SpecFlow;
+using ArenaGestor.Domain;
 
 namespace SpecflowTest.Steps
 {
@@ -15,12 +21,17 @@ namespace SpecflowTest.Steps
         private SnackPostDto snack;
         private string errorMessage;
         private IActionResult result;
-        private string alreadyUsedDescription;
+        private const string alreadyUsedDescription = "usada";
+        private Snack snackWithUsedDescription = new()
+        {
+            Price = 10,
+            Description =alreadyUsedDescription
+        };
 
         [Given(@"me encuentro en la pestaña de creación de los snacks")]
         public void GivenMeEncuentroEnLaPestanaDeCreacionDeLosSnacks()
         {
-            controller = BuildController();
+            controller = CreateAppService();
             snack = new();
         }
 
@@ -72,7 +83,7 @@ namespace SpecflowTest.Steps
         public void ThenMeSaleUnMensajeQueDice(string p0)
         {
             var objectResult = result as ObjectResult;
-            var createdSnack = objectResult.Value as SnackPostResult;
+            var createdSnack = objectResult.Value as SnackPostResultDto;
             createdSnack.Description.Should().Be("Papas fritas");
             createdSnack.Price.Should().Be(30);
             objectResult.StatusCode.Should().Be(StatusCodes.Status200OK);
@@ -84,9 +95,31 @@ namespace SpecflowTest.Steps
             snack.Description = alreadyUsedDescription;
         }
 
-        private ISnackAppService BuildController()
+        private ISnackAppService CreateAppService()
         {
-            throw new NotImplementedException();
+            SnackManagement dataAccess = new(CreateDataBase());
+            SnackService service = new(dataAccess);
+            SnackController controller = new(service);
+            return controller;
+        }
+
+        private DbContext CreateDataBase()
+        {
+            var context = CreateDbContext();
+            context.Add(snackWithUsedDescription);
+            context.SaveChanges();
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            return context;
+        }
+        public DbContext CreateDbContext()
+        {
+            var dbName = Guid.NewGuid().ToString();
+
+            var options = new DbContextOptionsBuilder<ArenaGestorContext>()
+                .UseInMemoryDatabase(databaseName: dbName)
+                .Options;
+
+            return new ArenaGestorContext(options);
         }
     }
 }

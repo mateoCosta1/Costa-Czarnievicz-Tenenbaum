@@ -61,5 +61,12 @@ namespace ArenaGestor.DataAccess.Managements
         {
             return this.snacks.AsNoTracking();
         }
+
+        public Snack InsertSnack(Snack snackFromDto)
+        {
+            this.snacks.Add(snackFromDto);
+            context.SaveChanges();
+            return snacks.AsNoTracking().FirstOrDefault(x => x.Description.Equals(snackFromDto.Description));
+        }
     }
 }

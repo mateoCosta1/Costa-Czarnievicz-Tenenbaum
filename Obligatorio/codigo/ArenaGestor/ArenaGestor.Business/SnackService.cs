@@ -95,5 +95,27 @@ namespace ArenaGestor.Business
             }
             return result;
         }
+
+        public Snack CreateSnack(Snack snackFromDto)
+        {
+            if (snackFromDto.Price < 0)
+            {
+                throw new ArgumentException("Tiene que ingresar un precio mayor o igual a 0 para el snack");
+            }
+            AssertSnackHasntBeenCreated(snackFromDto);
+            return snackPurchaseManager.InsertSnack(snackFromDto);
+        }
+
+        private void AssertSnackHasntBeenCreated(Snack snackFromDto)
+        {
+            var snacks = snackPurchaseManager.GetAllSnacks();
+            foreach(var snack in snacks)
+            {
+                if(snack.Description.Equals(snackFromDto.Description))
+                {
+                    throw new ArgumentException("Snack creado previamente");
+                }
+            }
+        }
     }
 }

@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace ArenaGestor.APIContracts.Snack
 {
-    public class SnackPostResult
+    public class SnackPostResultDto
     {
         public string Description { get; set; }
         public double Price { get; set; }
         public int Id { get; set; }
-        public SnackPostResult() { }
+        public SnackPostResultDto(Domain.Snack source) 
+        {
+            Description = source.Description;
+            Price = source.Price;
+            Id = source.SnackId;
+        }
     }
 }
