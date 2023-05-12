@@ -56,10 +56,12 @@ export class BuysnacksComponent implements OnInit {
     let snackListBuy : Array<SnackBuySnackDto> = new Array<SnackBuySnackDto>();
     this.snackList.forEach(element => {
       let amount = element.amount as number +"";
+      if(element.amount as number > 0 )
       snackListBuy.push({id: element.id +"",amount: amount })
     });
     this.service.buySnack(this.ticketId,snackListBuy).subscribe(res => {
-      return this.toastr.success("compra realizada con exito");
+      this.toastr.success("compra realizada con exito");
+      this.router.navigate(["/home"]);
     }, error => {
       this.toastr.error(error.error)
     })
