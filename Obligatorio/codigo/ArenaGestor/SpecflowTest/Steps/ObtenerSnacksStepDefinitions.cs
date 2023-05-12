@@ -40,7 +40,8 @@ namespace SpecflowTest.Steps
         [Given(@"que realice los pasos de compra de tickets correctamente")]
         public void GivenQueRealiceLosPasosDeCompraDeTicketsCorrectamente()
         {
-            _snackAppService = CreateAppService();
+            var factory = new FactorySnackService();
+            _snackAppService = factory.CreateAppService(new[]{snack1,snack2});
         }
 
         [When(@"apreto el boton de “Comprar tickets”")]

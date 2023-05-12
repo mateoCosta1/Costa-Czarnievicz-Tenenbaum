@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Features\CrearSnacks\" />
+    <Folder Include="Features\BajaSnacks\" />
   </ItemGroup>
 
 </Project>

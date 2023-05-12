@@ -22,6 +22,11 @@ namespace ArenaGestor.API.Controllers
             _snackService = service;
         }
 
+        public void DeleteSnack(int snackId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         [HttpGet]
         [Route("snack")]
         public IActionResult GetAllSnacks()
