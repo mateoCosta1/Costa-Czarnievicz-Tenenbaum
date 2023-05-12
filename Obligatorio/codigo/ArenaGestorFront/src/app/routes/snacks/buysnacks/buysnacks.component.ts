@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SnackResultSnackDto } from 'src/app/models/Snacks/SnackResultSnackDto';
 import { SnackService } from 'src/app/services/snack.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { SnackBuySnackDto } from 'src/app/models/Snacks/SnackBuySnackDto';
 
 @Component({
   selector: 'app-buysnacks',
@@ -13,9 +15,10 @@ export class BuysnacksComponent implements OnInit {
   snackList: Array<SnackResultSnackDto> = new Array<SnackResultSnackDto>();
   
   constructor(
-    private service: SnackService, 
-    private router: Router, 
-    private activatedRoute: ActivatedRoute
+    private service: SnackService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -28,24 +31,38 @@ export class BuysnacksComponent implements OnInit {
 
   GetData() {
     this.service.Get().subscribe(res => {
-      this.snackList = res
+      this.snackList = res;
+      this.snackList.forEach(snack => {
+        snack!.amount = 0;
+      });
     })
   }
 
-  addSnack(id: Number) {
+  addSnack(id: string) {
     this.snackList.forEach(snack => {
-      if(snack.id === id) snack!.amount = snack!.amount as number +1;
+      if(snack.id === id) snack!.amount = snack!.amount! +1;
     });
+    console.log(this.snackList);
   }
 
-  removeSnack(id: Number) {
+  removeSnack(id: string) {
     this.snackList.forEach(snack => {
-      if(snack.id === id) snack.amount === 0? snack.amount = 0 : snack!.amount = snack!.amount as number -1;
+      if(snack.id === id) snack.amount === 0? snack.amount = 0 : snack!.amount = snack!.amount! -1;
     });
+    console.log(this.snackList);
   }
 
-  buySnacks() {
-    this.service.buySnack(this.ticketId,this.snackList)
+  buySnacks(): void {
+    let snackListBuy : Array<SnackBuySnackDto> = new Array<SnackBuySnackDto>();
+    this.snackList.forEach(element => {
+      let amount = element.amount as number +"";
+      snackListBuy.push({id: element.id +"",amount: amount })
+    });
+    this.service.buySnack(this.ticketId,snackListBuy).subscribe(res => {
+      return this.toastr.success("compra realizada con exito");
+    }, error => {
+      this.toastr.error(error.error)
+    })
   }
 
 }

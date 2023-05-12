@@ -41,7 +41,7 @@ import { SnackInsertComponent } from './routes/snacks/snack-insert/snack-insert.
 import { BuysnacksComponent } from './routes/snacks/buysnacks/buysnacks.component';
 
 const routes: Routes = [
-
+  { path: 'snacks/comprar/:ticketId', component: BuysnacksComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cambiarcontrasena', component: ChangePasswordComponent, canActivate: [AuthGuard], data: { roles: ['Administrador', 'Espectador', 'Vendedor', 'Acomodador', 'Artista'] } },
@@ -80,7 +80,7 @@ const routes: Routes = [
   { path: 'protagonistas/bandas/ver/:id', component: ProtagonistBandComponent },
   { path: 'protagonistas/solistas/ver/:id', component: ProtagonistSoloistComponent },
   { path: '**', component: HomeComponent },
-  { path: 'snacks/comprar/:ticketId', component: BuysnacksComponent }
+  
 ];
 
 @NgModule({

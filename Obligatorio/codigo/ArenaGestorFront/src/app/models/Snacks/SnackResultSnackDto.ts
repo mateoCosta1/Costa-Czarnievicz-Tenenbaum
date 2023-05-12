@@ -1,6 +1,6 @@
 export class SnackResultSnackDto {
-    id: Number = 0;
+    id: string = "";
     description: String = "";
     price: Number = 0;
-    amount?: Number = 0;
+    amount?: number = 0;
 }

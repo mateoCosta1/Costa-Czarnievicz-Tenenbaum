@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SnackResultSnackDto } from '../models/Snacks/SnackResultSnackDto';
 import { SnackInsertSnackDto } from '../models/Snacks/SnackInsertSnackDto';
+import { SnackBuySnackDto } from '../models/Snacks/SnackBuySnackDto';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class SnackService {
   private apiUrl: string
 
   constructor(private http: HttpClient) {
-    this.apiUrl = environment.apiURL + "snacks"
+    this.apiUrl = environment.apiURL + "snack"
   }
 
   Get(): Observable<Array<SnackResultSnackDto>> {
@@ -24,12 +25,12 @@ export class SnackService {
     return this.http.post<SnackResultSnackDto>(this.apiUrl, snack)
   }
 
-  Delete(id: Number) {
+  Delete(id: string) {
     return this.http.delete(this.apiUrl + "/" + id.toString())
   }
 
-  buySnack(ticketId: String, snacks: Array<SnackResultSnackDto>){
-    return this.http.post<{ticketId: String, snacks:Array<SnackResultSnackDto>}>(this.apiUrl,{ticketId, snacks})
+  buySnack(ticketId: String, snacks: Array<SnackBuySnackDto>){
+    return this.http.post<{ticketId: String, snacks:Array<SnackBuySnackDto>}>(environment.apiURL+"shopp/snack",{ticketId, snacks})
   }
 
 }

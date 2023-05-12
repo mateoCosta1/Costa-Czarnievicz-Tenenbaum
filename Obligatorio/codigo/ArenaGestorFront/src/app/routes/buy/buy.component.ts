@@ -35,7 +35,6 @@ export class BuyComponent implements OnInit {
       this.toastr.success("Ticket comprado con ID: " + res.ticketId)
       this.ticketId = res.ticketId;
       this.router.navigate(["/snacks/comprar/"+this.ticketId]);
-      console.log(this.ticketId);
     }, error => {
       this.toastr.error(error.error)
     })
