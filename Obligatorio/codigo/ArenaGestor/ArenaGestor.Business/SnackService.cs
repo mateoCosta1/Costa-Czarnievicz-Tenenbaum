@@ -14,10 +14,10 @@ namespace ArenaGestor.Business
 {
     public class SnackService : ISnackService
     {
-        private ISnackManagement snackPurchaseManager;
+        private ISnackManagement snackManager;
         public SnackService(ISnackManagement snackPurchaseManager)
         {
-            this.snackPurchaseManager = snackPurchaseManager;
+            this.snackManager = snackPurchaseManager;
         }
 
         public SnackPurchase PurchaseSnacks(SnackPurchase purchaseSnack)
@@ -25,7 +25,7 @@ namespace ArenaGestor.Business
             AssertProperFormat(purchaseSnack);
             purchaseSnack.Snacks = CombineDuplicates(purchaseSnack.Snacks);
             purchaseSnack.TotalPrice = CountTotalPrice(purchaseSnack);
-            snackPurchaseManager.InsertSnackPurchase(purchaseSnack);
+            snackManager.InsertSnackPurchase(purchaseSnack);
             return purchaseSnack;
         }
 
@@ -37,7 +37,7 @@ namespace ArenaGestor.Business
             }
             foreach(var s in purchaseSnack.Snacks)
             {
-                s.Snack = snackPurchaseManager.GetSnack(s.Snack.SnackId) ?? 
+                s.Snack = snackManager.GetSnack(s.Snack.SnackId) ?? 
                     throw new ArgumentException($"El snack {s.Snack.SnackId} no existe");
                 if (s.Amount <= 0)
                 {
@@ -82,7 +82,7 @@ namespace ArenaGestor.Business
 
         public ICollection<Snack> GetAllSnacks()
         {
-            var snacksFromDatabase = snackPurchaseManager.GetAllSnacks();
+            var snacksFromDatabase = snackManager.GetAllSnacks();
             return ConvertToCollection(snacksFromDatabase);
         }
 
@@ -103,12 +103,12 @@ namespace ArenaGestor.Business
                 throw new ArgumentException("Tiene que ingresar un precio mayor o igual a 0 para el snack");
             }
             AssertSnackHasntBeenCreated(snackFromDto);
-            return snackPurchaseManager.InsertSnack(snackFromDto);
+            return snackManager.InsertSnack(snackFromDto);
         }
 
         private void AssertSnackHasntBeenCreated(Snack snackFromDto)
         {
-            var snacks = snackPurchaseManager.GetAllSnacks();
+            var snacks = snackManager.GetAllSnacks();
             foreach(var snack in snacks)
             {
                 if(snack.Description.Equals(snackFromDto.Description))
@@ -116,6 +116,11 @@ namespace ArenaGestor.Business
                     throw new ArgumentException("Snack creado previamente");
                 }
             }
+        }
+
+        public void DeleteSnack(int snackId)
+        {
+            snackManager.Delete(snackId);
         }
     }
 }

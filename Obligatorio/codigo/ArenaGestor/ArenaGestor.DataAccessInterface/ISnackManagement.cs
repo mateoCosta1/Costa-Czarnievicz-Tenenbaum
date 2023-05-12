@@ -14,5 +14,6 @@ namespace ArenaGestor.DataAccessInterface
         Snack? GetSnack(int snackId);
         IEnumerable<Snack> GetAllSnacks();
         Snack InsertSnack(Snack snackFromDto);
+        void Delete(int snackId);
     }
 }

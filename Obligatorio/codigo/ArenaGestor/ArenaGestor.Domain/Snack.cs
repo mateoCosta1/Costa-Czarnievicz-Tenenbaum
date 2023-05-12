@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 namespace ArenaGestor.Domain
 {
     public class Snack
-    {
+    { 
         public int SnackId { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
-        public Snack() { }
+        public bool Deleted { get; set; }
+        public Snack()
+        {
+            Deleted = false;
+        }
         public override bool Equals(object obj)
         {
             return obj is Snack other &&

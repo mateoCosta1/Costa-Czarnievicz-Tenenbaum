@@ -11,15 +11,23 @@ using System.Security.Cryptography.Xml;
 
 namespace ArenaGestor.API.Controllers
 {
-    
+
     [ApiController]
     [ExceptionFilter]
     public class SnackController : ControllerBase, ISnackAppService
     {
         private readonly ISnackService _snackService;
-        public SnackController(ISnackService service) 
+        public SnackController(ISnackService service)
         {
             _snackService = service;
+        }
+        [AuthorizationFilter(RoleCode.Administrador)]
+        [HttpDelete]
+        [Route("snack/{snackId}")]
+        public IActionResult DeleteSnack([FromRoute]int snackId)
+        {
+            _snackService.DeleteSnack(snackId);
+            return Ok();
         }
 
         [HttpGet]
