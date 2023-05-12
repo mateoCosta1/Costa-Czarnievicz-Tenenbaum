@@ -16,19 +16,17 @@ namespace ArenaGestor.API.Controllers
     public class SnackController : ControllerBase, ISnackAppService
     {
         private readonly ISnackService _snackService;
-        private readonly IMapper _mapper;
-        public SnackController(ISnackService service, IMapper mapper) 
+        public SnackController(ISnackService service) 
         {
             _snackService = service;
-            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult PostPurchaseSnacks(PurchaseSnacksDto purchase)
+        public IActionResult PostPurchaseSnacks([FromBody]PurchaseSnacksDto purchase)
         {
-            SnackPurchase mappedPurchase = _mapper.Map<SnackPurchase>(purchase);
+            SnackPurchase mappedPurchase = purchase.ToDomain();
             SnackPurchase result = _snackService.PurchaseSnacks(mappedPurchase);
-            PurchaseSnacksResponseDto mappedResult = _mapper.Map<PurchaseSnacksResponseDto>(result);
+            PurchaseSnacksResponseDto mappedResult = new PurchaseSnacksResponseDto(result);
             return Ok(mappedResult);
         }
     }

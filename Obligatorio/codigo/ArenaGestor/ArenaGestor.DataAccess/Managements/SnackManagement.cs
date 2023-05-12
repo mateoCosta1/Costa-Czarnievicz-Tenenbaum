@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using ArenaGestor.DataAccessInterface;
@@ -12,6 +13,7 @@ namespace ArenaGestor.DataAccess.Managements
     public class SnackManagement : ISnackManagement
     {
         private readonly DbSet<SnackPurchase> purchases;
+        private readonly DbSet<SnackPurchaseItem> purchaseItems;
         private readonly DbSet<Snack> snacks;
         private readonly DbContext context;
 
@@ -19,6 +21,7 @@ namespace ArenaGestor.DataAccess.Managements
         {
             this.purchases = context.Set<SnackPurchase>();
             this.snacks = context.Set<Snack>();
+            this.purchaseItems = context.Set<SnackPurchaseItem>();
             this.context = context;
         }
         public void InsertSnackPurchase(SnackPurchase purchase)
@@ -29,11 +32,20 @@ namespace ArenaGestor.DataAccess.Managements
 
         public SnackPurchase? GetPurchaseById(Guid TicketId)
         {
-            return this.purchases.AsNoTracking()
-                .Include("SnackPurchaseItem")
-                .Include("SnackPurchaseItem.Snack")
-                .FirstOrDefault(x => x.TicketId==TicketId)
-                ;
+            var purchase = this.purchases.Include(x => x.Snacks).AsNoTracking()
+                .FirstOrDefault(x => x.TicketId == TicketId);
+
+            if (purchase == null) return null;
+            List<SnackPurchaseItem> itemsWithSnacks = new List<SnackPurchaseItem> ();
+            foreach(var snackItem in purchase.Snacks)
+            {
+                var itemWithSnack = this.purchaseItems.Include(x => x.Snack)
+                    .AsNoTracking()
+                    .FirstOrDefault(x => x.Id == snackItem.Id);
+                itemsWithSnacks.Add(itemWithSnack);
+            }
+            purchase.Snacks = itemsWithSnacks;
+            return purchase;
         }
 
         public Snack? GetSnack(int snackId)

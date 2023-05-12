@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArenaGestor.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,16 @@ namespace ArenaGestor.APIContracts.Snack
 {
     public class SnackItemDto
     {
-        public int snackId { get; set; }
-        public int amount { get; set; }
+        public int SnackId { get; set; }
+        public int Amount { get; set; }
+
+        public SnackPurchaseItem ToDomain()
+        {
+            return new SnackPurchaseItem
+            {
+                Snack = new Domain.Snack() { SnackId = SnackId}
+                ,Amount = Amount
+            };
+        }
     }
 }

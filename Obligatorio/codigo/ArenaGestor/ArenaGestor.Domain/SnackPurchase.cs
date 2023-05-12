@@ -9,8 +9,14 @@ namespace ArenaGestor.Domain
     public class SnackPurchase
     {
         public Guid TicketId { get; set; }
-        public SnackPurchaseItem[] Snacks { get; set; }
+        public ICollection<SnackPurchaseItem> Snacks { get; set; }
         public double TotalPrice { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is SnackPurchase other &&
+                other.TicketId == TicketId;
+        }
     }
 
     public class SnackPurchaseItem

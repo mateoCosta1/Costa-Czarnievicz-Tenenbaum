@@ -4,14 +4,16 @@ using ArenaGestor.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArenaGestor.DataAccess.Migrations
 {
     [DbContext(typeof(ArenaGestorContext))]
-    partial class ArenaGestorContextModelSnapshot : ModelSnapshot
+    [Migration("20230511053648_snacks")]
+    partial class snacks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

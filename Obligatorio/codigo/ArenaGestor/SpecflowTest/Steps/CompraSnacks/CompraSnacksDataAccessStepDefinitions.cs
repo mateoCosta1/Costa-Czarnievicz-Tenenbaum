@@ -62,12 +62,22 @@ namespace SpecflowTest
 
         private DbContext CreateDataBase()
         {
-            //context = CreateDbContext();
+            context = CreateDbContext();
             context.SaveChanges();
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return context;
         }
-        
+        public DbContext CreateDbContext()
+        {
+            var dbName = Guid.NewGuid().ToString();
+
+            var options = new DbContextOptionsBuilder<ArenaGestorContext>()
+                .UseInMemoryDatabase(databaseName: dbName)
+                .Options;
+
+            return new ArenaGestorContext(options);
+        }
+
         [Given(@"I have selected a \(non-empty\) set of snacks")]
         public void GivenIHaveSelectedANon_EmptySetOfSnacks()
         {

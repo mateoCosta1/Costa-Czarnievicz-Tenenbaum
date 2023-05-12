@@ -45,6 +45,8 @@ namespace SpecflowTest.Steps.CompraSnacks
             snackAmount2.Snack = snack2;
             purchase.TicketId = ticket.TicketId;
             mockDataAccess.Setup(x => x.InsertSnackPurchase(It.IsAny<SnackPurchase>()));
+            mockDataAccess.Setup(x => x.GetSnack(snack1.SnackId)).Returns(snack1);
+            mockDataAccess.Setup(x => x.GetSnack(snack2.SnackId)).Returns(snack2);
         }
 
         [Given(@"I have selected a \(non-empty\) set of snacks")]
@@ -112,7 +114,7 @@ namespace SpecflowTest.Steps.CompraSnacks
             };
             Assert.IsNotNull(result);
             bool sameTicket = expectedResult.TicketId.Equals(result.TicketId);
-            bool hasCorrectAmountOfItems = result.Snacks.Length == 2;
+            bool hasCorrectAmountOfItems = result.Snacks.Count == 2;
             Assert.IsTrue(sameTicket && hasCorrectAmountOfItems);
         }
     }

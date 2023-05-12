@@ -149,8 +149,14 @@ namespace ArenaGestor.DataAccess
             modelBuilder.Entity<Snack>().HasKey(x => x.SnackId);
             modelBuilder.Entity<SnackPurchase>().HasKey(x => x.TicketId);
             modelBuilder.Entity<SnackPurchaseItem>().HasKey(x => x.Id);
-            
 
+            modelBuilder.Entity<SnackPurchase>()
+                .HasMany(x => x.Snacks)
+                .WithOne();
+
+            modelBuilder.Entity<SnackPurchaseItem>()
+                .HasOne(x => x.Snack)
+                .WithMany();
             
         }
     }

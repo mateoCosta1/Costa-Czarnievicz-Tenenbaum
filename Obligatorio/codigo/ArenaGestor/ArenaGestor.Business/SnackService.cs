@@ -31,12 +31,14 @@ namespace ArenaGestor.Business
 
         private void AssertProperFormat(SnackPurchase purchaseSnack)
         {
-            if (purchaseSnack.Snacks is null || purchaseSnack.Snacks.Length == 0)
+            if (purchaseSnack.Snacks is null || purchaseSnack.Snacks.Count == 0)
             {
                 throw new ArgumentException("Tiene que seleccionar al menos un snack");
             }
             foreach(var s in purchaseSnack.Snacks)
             {
+                s.Snack = snackPurchaseManager.GetSnack(s.Snack.SnackId) ?? 
+                    throw new ArgumentException($"El snack {s.Snack.SnackId} no existe");
                 if (s.Amount <= 0)
                 {
                     throw new ArgumentException("No se puede comprar una cantidad de snacks menor o igual a 0");
@@ -54,7 +56,7 @@ namespace ArenaGestor.Business
             return totalPrice;
         }
 
-        private SnackPurchaseItem[] CombineDuplicates(SnackPurchaseItem[] source)
+        private SnackPurchaseItem[] CombineDuplicates(ICollection<SnackPurchaseItem> source)
         {
             List<SnackPurchaseItem> result = new();
             foreach (var snackAmount in source)
