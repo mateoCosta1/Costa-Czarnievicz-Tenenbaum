@@ -1,0 +1,33 @@
+<div class="d-flex flex-row justify-content-between">
+    <div class="d-flex">
+        <h2>Compra tus snacks aqui!!!</h2>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">Id</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let snack of snackList">
+            <td>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#addSnack" (click)="addSnack(snack.id)">Agregar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#addSnack" (click)="removeSnack(snack.id)">Quitar</button>
+            </td>
+            <td scope="col">{{snack.id}}</td>
+            <td scope="col">{{snack.description}}</td>
+            <td scope="col">{{snack.price}}</td>
+            <td scope="col">{{snack.amount}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button class="btn btn-primary btn-small" (click)="buySnacks()">Comprar</button>
