@@ -44,5 +44,10 @@ namespace ArenaGestor.API.Controllers
             PurchaseSnacksResponseDto mappedResult = new PurchaseSnacksResponseDto(result);
             return Ok(mappedResult);
         }
+
+        public IActionResult PostSnack(SnackPostDto snackPost)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
