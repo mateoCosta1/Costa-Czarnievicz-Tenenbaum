@@ -24,12 +24,26 @@ namespace SpecflowTest
         SnackManagement dataAccess;
         SnackService service;
         SnackController controller;
+        DbContext context;
 
-        public ISnackAppService CreateAppService(Snack[] snacksInDatabase)
+        public FactorySnackService(Snack[] snacksInDatabase)
         {
             dataAccess = new(CreateDataBase(snacksInDatabase));
             service = new(dataAccess);
             controller = new(service);
+        }
+        public FactorySnackService(Snack[] snacksInDatabase, SnackPurchase[] purchasesInDatabase)
+        {
+            dataAccess = new(CreateDataBase(snacksInDatabase));
+            foreach(var p in purchasesInDatabase)
+            {
+                dataAccess.InsertSnackPurchase(p);
+            }
+            service = new(dataAccess);
+            controller = new(service);
+        }
+        public ISnackAppService CreateAppService()
+        {
             return controller;
         }
 
@@ -38,14 +52,23 @@ namespace SpecflowTest
             return dataAccess;
         }
 
+        public void AddObjectToContext(object obj)
+        {
+            context.Entry(obj).State = EntityState.Added;
+            context.SaveChanges();
+        }
+
         private DbContext CreateDataBase(Snack[] snacksInDatabase)
         {
-            var context = CreateDbContext();
+            context = CreateDbContext();
             foreach (var snack in snacksInDatabase)
             {
                 context.Add(snack);
+                context.SaveChanges();
+                context.Entry(snack).State = EntityState.Detached;
+                context.SaveChanges();
             }
-            context.SaveChanges();
+            
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return context;
         }

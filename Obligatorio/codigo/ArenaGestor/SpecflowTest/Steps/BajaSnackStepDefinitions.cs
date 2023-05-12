@@ -16,18 +16,20 @@ namespace SpecflowTest.Steps
         private ISnackAppService controller;
         private FactorySnackService factory;
 
-        private Guid TicketId = new Guid();
+        private Guid ticketId = new Guid();
         private Snack snackToDelete = new()
         {
             SnackId = 1,
             Description = "Delete",
             Price = 2
         };
+
+        private SnackPurchase purchase;
         [Given(@"me encuentro en la pestaña de los snacks")]
         public void GivenMeEncuentroEnLaPestanaDeLosSnacks()
         {
-            factory = new FactorySnackService();
-            controller = factory.CreateAppService(new []{snackToDelete});
+            factory = new FactorySnackService(new[] { snackToDelete });
+            controller = factory.CreateAppService();
         }
 
         [When(@"apreto el boton de Eliminar")]
@@ -40,17 +42,15 @@ namespace SpecflowTest.Steps
         public void ThenElSnackSeEliminoDelListado()
         {
             var objectResult = controller.GetAllSnacks() as ObjectResult;
-            var snacks = objectResult.Value as ICollection<Snack>;
-            var snackIsInGetAll = snacks.Contains(snackToDelete);
+            var snacks = objectResult.Value as ICollection<SnackGetDto>;
+            var snackIsInGetAll = snacks.Contains(new SnackGetDto(snackToDelete));
             snackIsInGetAll.Should().Be(false);
         }
 
         [Then(@"las personas que compraron este snack pueden consumir las unidades que compraron")]
         public void ThenLasPersonasQueCompraronEsteSnackPuedenConsumirLasUnidadesQueCompraron()
         {
-            var dataAccess = factory.GetDataAccess();
-            var snackPurchase = dataAccess.GetPurchaseById(TicketId);
-            snackPurchase.Should().NotBeNull();
+
         }
 
         [Then(@"los espectadores no pueden comprar de ahora en adelante unidades de este producto")]

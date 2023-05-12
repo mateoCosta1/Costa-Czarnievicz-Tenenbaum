@@ -54,12 +54,12 @@ namespace ArenaGestor.DataAccess.Managements
 
         public Snack? GetSnack(int snackId)
         {
-            return this.snacks.AsNoTracking().FirstOrDefault(x => x.SnackId == snackId);
+            return AllowedSnacks().FirstOrDefault(x => x.SnackId == snackId);
         }
 
         public IEnumerable<Snack> GetAllSnacks()
         {
-            return this.snacks.AsNoTracking();
+            return AllowedSnacks().AsNoTracking();
         }
 
         public Snack InsertSnack(Snack snackFromDto)
@@ -67,6 +67,19 @@ namespace ArenaGestor.DataAccess.Managements
             this.snacks.Add(snackFromDto);
             context.SaveChanges();
             return snacks.AsNoTracking().FirstOrDefault(x => x.Description.Equals(snackFromDto.Description));
+        }
+
+        public void Delete(int snackId)
+        {
+            var snack = this.snacks.AsNoTracking().FirstOrDefault(x => x.SnackId == snackId);
+            snack.Deleted = true;
+            context.Entry(snack).State = EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        private IQueryable<Snack> AllowedSnacks()
+        {
+            return snacks.AsNoTracking().Where(x => !x.Deleted);
         }
     }
 }

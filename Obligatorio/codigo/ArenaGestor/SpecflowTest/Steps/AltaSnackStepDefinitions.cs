@@ -31,8 +31,8 @@ namespace SpecflowTest.Steps
         [Given(@"me encuentro en la pestaña de creación de los snacks")]
         public void GivenMeEncuentroEnLaPestanaDeCreacionDeLosSnacks()
         {
-            var factory = new FactorySnackService();
-            controller = factory.CreateAppService(new[] {snackWithUsedDescription});
+            var factory = new FactorySnackService(new[] { snackWithUsedDescription });
+            controller = factory.CreateAppService();
             snack = new();
         }
 
