@@ -44,5 +44,16 @@ namespace ArenaGestor.API.Controllers
             PurchaseSnacksResponseDto mappedResult = new PurchaseSnacksResponseDto(result);
             return Ok(mappedResult);
         }
+
+        [AuthorizationFilter(RoleCode.Administrador)]
+        [HttpPost]
+        [Route("snack")]
+        public IActionResult PostSnack(SnackPostDto snackPost)
+        {
+            Snack domainSnack = snackPost.ToDomain();
+            Snack result = _snackService.CreateSnack(domainSnack);
+            var dtoResult = new SnackPostResultDto(result);
+            return Ok(dtoResult);
+        }
     }
 }

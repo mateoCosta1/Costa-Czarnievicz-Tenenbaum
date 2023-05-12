@@ -12,5 +12,6 @@ namespace ArenaGestor.APIContracts
     {
         IActionResult PostPurchaseSnacks(PurchaseSnacksDto purchase);
         IActionResult GetAllSnacks();
+        IActionResult PostSnack(SnackPostDto snackPost);
     }
 }

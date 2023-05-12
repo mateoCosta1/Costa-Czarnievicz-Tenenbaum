@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -23,6 +23,10 @@
     <ProjectReference Include="..\ArenaGestor.APIContracts\ArenaGestor.APIContracts.csproj" />
     <ProjectReference Include="..\ArenaGestor.API\ArenaGestor.API.csproj" />
     <ProjectReference Include="..\ArenaGestor.BusinessInterface\ArenaGestor.BusinessInterface.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CrearSnacks\" />
   </ItemGroup>
 
 </Project>

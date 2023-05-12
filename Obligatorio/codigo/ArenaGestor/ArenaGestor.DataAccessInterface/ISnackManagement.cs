@@ -13,5 +13,6 @@ namespace ArenaGestor.DataAccessInterface
         SnackPurchase? GetPurchaseById(Guid TicketId);
         Snack? GetSnack(int snackId);
         IEnumerable<Snack> GetAllSnacks();
+        Snack InsertSnack(Snack snackFromDto);
     }
 }
