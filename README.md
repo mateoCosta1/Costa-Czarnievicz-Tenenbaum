@@ -20,7 +20,8 @@ Grupo N6A
 - Tutor/es: Álvaro Ortas
 
 Informe avance 1 - 11 de Abril 2023 <br>
-Informe avance 2 - 18 de Abril 2023 
+Informe avance 2 - 18 de Abril 2023 <br>
+Informe avance 3 - 12 de Mayo 2023
 
 
 
@@ -111,4 +112,73 @@ En resumen, la configuración del pipeline con Github Actions puede ser un proce
  - [Rerport de ESLint:](/Obligatorio/codigo/ArenaGestorFront/reportESLint.txt)
 
 ## Informe Avance 3:
-- [Tercera versión del Proceso de Ingeniería]()
+
+  - [Objetivo](#objetivo3)
+- [Proceso de Ingeniería(3ra versión)](/InformeAvance3/Proceso%20de%20ingenieria%20(3ra%20version).pdf)
+    - Planificación
+    - Definición de requerimientos
+    - Implementación de casos de test
+    - Codificación
+    - Test de integración
+    - Review con el PO (Product Owner)
+    - Done
+    - <b>Definition of Done</b>
+    - Planificación 
+    - Definición de requerimientos
+    - Implementación de casos de test
+    - Codificación
+    - Test de integración
+    - Review con el PO (Product Owner)
+    - Done
+- [Explicación del tablero y su vínculo con el proceso de ingeniería](/InformeAvance3/Explicacion%20del%20tablero%20y%20su%20vinculo%20con%20el%20proceso%20de%20ingenieria-1.pdf)
+    - Explicación del tablero KANBAN sustentable
+    - Vínculo del tablero con el proceso de ingeniería
+- [Configuración del pipline y su vínculo con el tablero](/InformeAvance3/Configuracion%20del%20pipeline%20y%20su%20vinculo%20con%20el%20tablero-1.pdf)
+- [Definición de requerimientos](/InformeAvance3/Definicion%20de%20Requerimientos.pdf)
+    - Mantenimiento de snacks
+        - User story 1
+        - User story 2
+    - Comprar snacks
+        - User story 3
+- [Implementación de los casos de prueba con Specflow](/InformeAvance3/Implementacion%20de%20los%20casos%20de%20prueba%20con%20Specflow.pdf)
+    - Features
+    - Implementación de los casos de prueba
+    - Implementación del código de backend
+- [Evidencia de ejecución de los casos de prueba](/InformeAvance3/Evidencia%20de%20ejecuci%C3%B3n%20de%20los%20casos%20de%20prueba.pdf)
+    - Casos deprueba ejecutados pasando
+    - Evidencia de BDD por historial de commits
+- [Review con el Product Owner](/InformeAvance3/Review%20con%20el%20Product%20Owner.pdf)
+- [Total registro de esfuerzo por la entrega](/InformeAvance3/Total%20registro%20de%20esfuerzo%20por%20la%20entrega-1.pdf)
+- [Retrospectiva](/InformeAvance3/Retrospectiva-1.pdf)
+- [Lecciones aprendidas en esta etapa](#lecciones3)
+- [Backlog](#backlog3)
+
+<hr>
+## Objetivo informe avance 3:<a name="objetivo3"></a>
+
+El objetivo para esta tercera entrega es aplicar las metodologías de DevOps en este caso basadas en BDD para el desarrollo de dos nuevas funcionalidades y adaptar dichos elementos al tablero.
+
++ Mantenimiento de snacks
+El usuario administrador puede realizar alta y baja de snacks con descripción y precio (datos obligatorios).
+<br>
++ Comprar snacks
+<br>
+Antes de finalizar una compra de tickets, se ofrece la posibilidad de comprar Snacks. El espectador puede agregar distintas cantidades de snacks, se calcula el subtotal de snacks y se suma al de tickets.
+<br>
+Además se destaca como relevante el aprendizaje y utilización de herramientas como Gherkin, Specflow, Github Actions, que permiten automatizar las pruebas funcionales en el marco BDD. Gherkin contribuyó en la creación de los escenarios de los test funcionales corridos con Specflow. Las Github Actions se relacionan con la configuración del pipeline automatizado. 
+
+## Lecciones aprendidas en esta etapa:<a name="lecciones3"></a>
+La configuración del Pipeline ha conllevado un tiempo y esfuerzo más alto de lo esperado y aún detectamos algún problema menor en él. Hemos tenido problema con el manejo de versiones de node en la instalación de las dependencias del build y también en cuanto a los test unitarios de reflection que estaban mal implementados, por lo que decidimos quitarlos del proyecto.
+Creemos que la configuración del pipeline es ideal para hacer en un proyecto desde cero, ya que al hacerlo en uno empezado y que nos fue entregado también nos trajo sus complicaciones por fuera de lo que es el aprendizaje de una nueva herramienta. De todas maneras, consideramos que es aporta gran valor al flujo de trabajo. 
+Manejo de las nuevas herramientas propuestas en el curso como Gherkin, Specflow.
+La utilización y el poder aprovechar el marco de BDD como herramienta para obtener mayor agilidad en el proceso de ingeniería.
+Darle mayor relevancia a la retrospectiva como una etapa en la que se puede realmente reflexionar como equipo sobre qué se puede mejorar y cómo acercarse más a los objetivos planeados.  
+
+## Backlog:<a name="backlog3"></a>
+| Tarea                                                                                                                                 | Prioridad/Severidad | Detalles                                                                            |
+|---------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------------------------------------|
+| Tabla resumen con issues detectados ordenados por prioridad y/o severidad                                                             | Media               | Quedó pendiente de las entregas anteriores y es feedback recibido por los clientes. |
+| Issues con analizadores estáticos de código carecen de descripción                                                                    | Media               | Quedó pendiente de las entregas anteriores y es feedback recibido por los clientes. |
+| Excepción controlada al ingresar un precio null pero no personalizadamente, por lo que el mensaje de error es una excepción genérica. | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+| Mejora a futuro, mostrar el snack comprado junto al ticket y el total sumado de dicha compra.                                         | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+| Mejorar estilos del front                                                                                                             | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
