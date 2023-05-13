@@ -1,5 +1,6 @@
 Universidad Ort Uruguay, Facultad de Ingeniería
 
+Este documento contiene el código del gestor Arena, junto con una serie de informes de avance centrados en el desarrollo ágil. Durante el transcurso del curso de Ingeniería de Software Ágil 2, estamos aprendiendo diferentes metodologías que debemos aplicar en este proyecto para ponerlas en práctica de manera efectiva. Cada informe de avance describe nuestra propuesta para abordar la etapa en curso, detallando los acontecimientos relevantes y los aprendizajes obtenidos. Este informe corresponde a la tercera entrega de las cinco que el equipo debe realizar. Además, en este momento se encuentran disponibles los informes desde la primera entrega hasta la tercera.
 # Informe Avances 
 
 
