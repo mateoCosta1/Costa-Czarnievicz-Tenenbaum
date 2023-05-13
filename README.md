@@ -28,7 +28,7 @@ Informe avance 3 - 12 de Mayo 2023
 #### Link al repositorio: https://github.com/mateoCosta1/Costa-Czarnievicz-Tenenbaum
 
 # Índice:
-## Informe Avance 1:
+# Informe Avance 1:
 
 - [Definición del marco general de KANBAN](/Informe%20Avance%201/Definicion%20de%20marco%20general%20de%20KANBAN.pdf)
 - [Primera versión del Proceso de Ingeniería](/Informe%20Avance%201/Primera%20version%20del%20proceso%20de%20ingenieria.pdf)
@@ -48,7 +48,7 @@ Informe avance 3 - 12 de Mayo 2023
     - Report de ReSharper(Backend)
     - Report de ESLint (Frontend)
 
-## Informe Avance 2:
+# Informe Avance 2:
 - [Segunda versión del Proceso de Ingeniería](/InformeAvance%202/Segunda%20version%20proceso%20de%20ingenieria.pdf)
     - Planificación
     - Selección de bugs
@@ -111,7 +111,7 @@ En resumen, la configuración del pipeline con Github Actions puede ser un proce
  - [Report de ReSharper:](/Obligatorio/codigo/ArenaGestor/reportReSharper.xml) 
  - [Rerport de ESLint:](/Obligatorio/codigo/ArenaGestorFront/reportESLint.txt)
 
-## Informe Avance 3:
+# Informe Avance 3:
 
   - [Objetivo](#objetivo3)
 - [Proceso de Ingeniería(3ra versión)](/InformeAvance3/Proceso%20de%20ingenieria%20(3ra%20version).pdf)
