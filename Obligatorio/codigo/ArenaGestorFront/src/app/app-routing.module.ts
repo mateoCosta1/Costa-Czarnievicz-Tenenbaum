@@ -36,9 +36,12 @@ import { ProtagonistSoloistsComponent } from './routes/protagonist/protagonist.s
 import { ProtagonistBandComponent } from './routes/protagonist/protagonist.band.component';
 import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.soloist.component';
 import { GenderDeleteComponent } from './routes/genders/gender-delete.component';
+import { SnacksComponent } from './routes/snacks/snacks.component';
+import { SnackInsertComponent } from './routes/snacks/snack-insert/snack-insert.component';
+import { BuysnacksComponent } from './routes/snacks/buysnacks/buysnacks.component';
 
 const routes: Routes = [
-
+  { path: 'snacks/comprar/:ticketId', component: BuysnacksComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cambiarcontrasena', component: ChangePasswordComponent, canActivate: [AuthGuard], data: { roles: ['Administrador', 'Espectador', 'Vendedor', 'Acomodador', 'Artista'] } },
@@ -70,11 +73,14 @@ const routes: Routes = [
   { path: 'administracion/conciertos/editar/:id', component: ConcertUpdateComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/conciertos/ver/:id', component: ConcertViewComponent },
   { path: 'administracion/conciertos/verbyartista/:id', component: ConcertArtistViewComponent },
+  { path: 'administracion/snacks', component: SnacksComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
+  { path: 'administracion/snacks/insertar', component: SnackInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'protagonistas/bandas', component: ProtagonistBandsComponent },
   { path: 'protagonistas/solistas', component: ProtagonistSoloistsComponent },
   { path: 'protagonistas/bandas/ver/:id', component: ProtagonistBandComponent },
   { path: 'protagonistas/solistas/ver/:id', component: ProtagonistSoloistComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent },
+  
 ];
 
 @NgModule({
