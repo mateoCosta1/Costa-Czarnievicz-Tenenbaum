@@ -109,3 +109,6 @@ En resumen, la configuración del pipeline con Github Actions puede ser un proce
 ## Anexo:<a name="anexo"></a>
  - [Report de ReSharper:](/Obligatorio/codigo/ArenaGestor/reportReSharper.xml) 
  - [Rerport de ESLint:](/Obligatorio/codigo/ArenaGestorFront/reportESLint.txt)
+
+## Informe Avance 3:
+- [Segunda versión del Proceso de Ingeniería]()
