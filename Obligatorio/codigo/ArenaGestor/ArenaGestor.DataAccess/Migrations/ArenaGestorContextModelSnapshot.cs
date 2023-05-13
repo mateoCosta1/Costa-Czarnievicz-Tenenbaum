@@ -327,6 +327,66 @@ namespace ArenaGestor.DataAccess.Migrations
                     b.ToTable("Session");
                 });
 
+            modelBuilder.Entity("ArenaGestor.Domain.Snack", b =>
+                {
+                    b.Property<int>("SnackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("SnackId");
+
+                    b.ToTable("Snack");
+                });
+
+            modelBuilder.Entity("ArenaGestor.Domain.SnackPurchase", b =>
+                {
+                    b.Property<Guid>("TicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("TicketId");
+
+                    b.ToTable("SnackPurchase");
+                });
+
+            modelBuilder.Entity("ArenaGestor.Domain.SnackPurchaseItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SnackId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SnackPurchaseTicketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SnackId");
+
+                    b.HasIndex("SnackPurchaseTicketId");
+
+                    b.ToTable("SnackPurchaseItem");
+                });
+
             modelBuilder.Entity("ArenaGestor.Domain.Ticket", b =>
                 {
                     b.Property<Guid>("TicketId")
@@ -558,6 +618,19 @@ namespace ArenaGestor.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ArenaGestor.Domain.SnackPurchaseItem", b =>
+                {
+                    b.HasOne("ArenaGestor.Domain.Snack", "Snack")
+                        .WithMany()
+                        .HasForeignKey("SnackId");
+
+                    b.HasOne("ArenaGestor.Domain.SnackPurchase", null)
+                        .WithMany("Snacks")
+                        .HasForeignKey("SnackPurchaseTicketId");
+
+                    b.Navigation("Snack");
+                });
+
             modelBuilder.Entity("ArenaGestor.Domain.Ticket", b =>
                 {
                     b.HasOne("ArenaGestor.Domain.Concert", "Concert")
@@ -657,6 +730,11 @@ namespace ArenaGestor.DataAccess.Migrations
             modelBuilder.Entity("ArenaGestor.Domain.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("ArenaGestor.Domain.SnackPurchase", b =>
+                {
+                    b.Navigation("Snacks");
                 });
 
             modelBuilder.Entity("ArenaGestor.Domain.User", b =>

@@ -51,6 +51,9 @@ import { ProtagonistSoloistsComponent } from './routes/protagonist/protagonist.s
 import { ProtagonistBandComponent } from './routes/protagonist/protagonist.band.component';
 import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.soloist.component';
 import { GenderDeleteComponent } from './routes/genders/gender-delete.component';
+import { SnacksComponent } from './routes/snacks/snacks.component';
+import { SnackInsertComponent } from './routes/snacks/snack-insert/snack-insert.component';
+import { BuysnacksComponent } from './routes/snacks/buysnacks/buysnacks.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +94,10 @@ import { GenderDeleteComponent } from './routes/genders/gender-delete.component'
     ProtagonistSoloistsComponent,
     ProtagonistBandComponent,
     ProtagonistSoloistComponent,
-    GenderDeleteComponent
+    GenderDeleteComponent,
+    SnacksComponent,
+    SnackInsertComponent,
+    BuysnacksComponent
   ],
   imports: [
     CommonModule,
