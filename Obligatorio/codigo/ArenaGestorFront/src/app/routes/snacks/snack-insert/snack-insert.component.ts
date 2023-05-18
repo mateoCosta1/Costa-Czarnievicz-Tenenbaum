@@ -26,13 +26,18 @@ export class SnackInsertComponent implements OnInit {
   }
 
   Confirmar() {
-    this.service.Insert(this.model).subscribe(res => {
-      this.toastr.success("Snack agregado correctamente", "Éxito")
-      this.router.navigate(["/administracion/snacks"])
-    },
-      err => {
-        this.toastr.error(err.error, "Error")
-      })
+    if(this.model.price){
+      this.service.Insert(this.model).subscribe(res => {
+        this.toastr.success("Snack agregado correctamente", "Éxito")
+        this.router.navigate(["/administracion/snacks"])
+      },
+        err => {
+          this.toastr.error(err.error, "Error")
+        })
+    } else {
+      this.toastr.error("Error ingrese bien los datos", "Error ingrese bien los datos")
+    }
+      
   }
 
 }
