@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [develop, main]
 jobs:
-  ci:
+  build-angular:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Cache node modules
         id: cache-nodemodules
-        uses: actions/cache@v2
+        uses: actions/cache@v1
         env:
           cache-name: cache-node-modules
         with:
