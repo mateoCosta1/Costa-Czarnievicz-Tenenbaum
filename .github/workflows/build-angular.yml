@@ -1,19 +1,21 @@
-name: Angular GitHub CI #
-on: 
+name: Build Angular
+on:
   push:
-    branches: [ develop, main ]
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
 jobs:
-  ci:
+  build-angular:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js 
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16.14.0"
+          node-version: "16.x"
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
@@ -21,23 +23,19 @@ jobs:
 
       - name: Cache node modules
         id: cache-nodemodules
-        uses: actions/cache@v2
+        uses: actions/cache@v1
         env:
           cache-name: cache-node-modules
         with:
-          # caching node_modules
-          path: node_modules #  path for node_modules folder
+          path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          #  name of the chache key includes package-lock.json
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        if:
-          steps.cache-nodemodules.outputs.cache-hit != 'true'
-          #  if cache hits the skip this step.
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
         working-directory: ./Obligatorio/codigo/ArenaGestorFront/
 
