@@ -20,8 +20,11 @@ jobs:
       - name: Install Chrome WebDriver
         run: npm install webdriver-manager -g
 
-      - name: Start Chrome WebDriver
-        run: webdriver-manager update --versions.chrome $(google-chrome-stable --version | awk '{ print $3 }' | awk -F. '{ printf "%s.%s", $1, $2 }') --gecko false --ignore_ssl
+      - name: Update WebDriver Manager and Install Dependencies
+        run: |
+          npm install -g webdriver-manager
+          webdriver-manager update --versions.chrome=$(google-chrome-stable --version | awk '{ print $3 }' | awk -F. '{ printf "%s.%s", $1, $2 }') --gecko=false
+        working-directory: ./Obligatorio/codigo/ArenaGestorFront/
 
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
