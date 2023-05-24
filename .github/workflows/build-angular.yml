@@ -38,6 +38,10 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
         working-directory: ./Obligatorio/codigo/ArenaGestorFront/
+      
+      - name: Install dev dependencies
+        run: npm install @angular-devkit/build-angular
+        working-directory: ./Obligatorio/codigo/ArenaGestorFront/
 
       - name: Build
         run: ng build --prod
