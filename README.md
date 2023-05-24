@@ -21,14 +21,20 @@ Grupo N6A
 
 Informe avance 1 - 11 de Abril 2023 <br>
 Informe avance 2 - 18 de Abril 2023 <br>
-Informe avance 3 - 12 de Mayo 2023
+Informe avance 3 - 12 de Mayo 2023 <br>
+Informe avance 4 - 23 de Mayo 2023
 
 
 
 #### Link al repositorio: https://github.com/mateoCosta1/Costa-Czarnievicz-Tenenbaum
 
 # Índice:
-# Informe Avance 1:
+[Informe Avance 1](#informe-avance-1)
+[Informe Avance 2](#informe-avance-2)
+[Informe Avance 3](#informe-avance-3)
+[Informe Avance 4](#informe-avance-4)
+
+# Informe Avance 1:<a name="avance1"></a>
 
 - [Definición del marco general de KANBAN](/Informe%20Avance%201/Definicion%20de%20marco%20general%20de%20KANBAN.pdf)
 - [Primera versión del Proceso de Ingeniería](/Informe%20Avance%201/Primera%20version%20del%20proceso%20de%20ingenieria.pdf)
@@ -47,8 +53,9 @@ Informe avance 3 - 12 de Mayo 2023
 - [Anexo](#anexo)
     - Report de ReSharper(Backend)
     - Report de ESLint (Frontend)
+<hr>
 
-# Informe Avance 2:
+# Informe Avance 2:<a name="avance2"></a>
 - [Segunda versión del Proceso de Ingeniería](/InformeAvance%202/Segunda%20version%20proceso%20de%20ingenieria.pdf)
     - Planificación
     - Selección de bugs
@@ -111,7 +118,9 @@ En resumen, la configuración del pipeline con Github Actions puede ser un proce
  - [Report de ReSharper:](/Obligatorio/codigo/ArenaGestor/reportReSharper.xml) 
  - [Rerport de ESLint:](/Obligatorio/codigo/ArenaGestorFront/reportESLint.txt)
 
-# Informe Avance 3:
+<hr>
+
+# Informe Avance 3:<a name="avance3"></a>
 
   - [Objetivo](#objetivo3)
 - [Proceso de Ingeniería(3ra versión)](/InformeAvance3/Proceso%20de%20ingenieria%20(3ra%20version).pdf)
@@ -154,6 +163,7 @@ En resumen, la configuración del pipeline con Github Actions puede ser un proce
 - [Backlog](#backlog3)
 
 <hr>
+
 ## Objetivo informe avance 3:<a name="objetivo3"></a>
 
 El objetivo para esta tercera entrega es aplicar las metodologías de DevOps en este caso basadas en BDD para el desarrollo de dos nuevas funcionalidades y adaptar dichos elementos al tablero.
@@ -179,6 +189,59 @@ Darle mayor relevancia a la retrospectiva como una etapa en la que se puede real
 |---------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------------------------------------|
 | Tabla resumen con issues detectados ordenados por prioridad y/o severidad                                                             | Media               | Quedó pendiente de las entregas anteriores y es feedback recibido por los clientes. |
 | Issues con analizadores estáticos de código carecen de descripción                                                                    | Media               | Quedó pendiente de las entregas anteriores y es feedback recibido por los clientes. |
+| Excepción controlada al ingresar un precio null pero no personalizadamente, por lo que el mensaje de error es una excepción genérica. | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+| Mejora a futuro, mostrar el snack comprado junto al ticket y el total sumado de dicha compra.                                         | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+| Mejorar estilos del front                                                                                                             | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+
+<hr>
+
+# Informe Avance 4:<a name="avance4"></a>
+
+  - [Objetivo](#objetivo4)
+  - [Mejoras de iteraciones anteriores](/InformeAvance4/Mejoras%20de%20iteraciones%20anteriores.pdf)
+    - Actualizamos cómo se mueven las tarjetas en el tablero
+    - Arreglo de la configuración del pipeline
+- [Proceso de Ingeniería(4ta versión)](/InformeAvance4/Proceso%20de%20ingenieria%20(4%20version).pdf)
+    - Planificación
+    - Definición de requerimientos
+    - Implementación de casos de test
+    - Codificación
+    - Test de integración
+    - Review con el PO (Product Owner)
+    - Done
+    - <b>Definition of Done</b>
+    - Planificación 
+    - Definición de requerimientos
+    - Implementación de casos de test
+    - Codificación
+    - Test de integración
+    - Review con el PO (Product Owner)
+    - Check
+- [Explicación del tablero y su vínculo con el proceso de ingeniería](/InformeAvance4/Explicacion%20del%20tablero%20y%20su%20vinculo%20con%20el%20proceso%20de%20ingenieria.pdf)
+    - Explicación del tablero KANBAN sustentable
+    - Vínculo del tablero con el proceso de ingeniería
+- [Evidencia de ejecución de casos de prueba](/InformeAvance4/Evidencia%20de%20ejecucion%20de%20casos%20de%20prueba.pdf)
+- [Métricas de DevOps](/InformeAvance4/Metricas%20de%20DevOps.pdf)
+    - Definición de uso de las métricas
+    - Informe de Análisis de Métricas de DevOps para el Equipo
+- [Review con el Product Owner](/InformeAvance4/Review%20con%20el%20Product%20Owner%20(2).pdf)
+- [Retrospectiva](/InformeAvance4/Retrospectiva%20(5).pdf)
+- [Total registro de esfuerzo por la entrega](/InformeAvance4/Total%20registro%20de%20esfuerzo%20por%20la%20entrega%20(1).pdf)
+- [Lecciones aprendidas en esta etapa](/InformeAvance4/Lecciones%20aprendidas%20en%20esta%20etapa.pdf)
+- [Backlog](#backlog4)
+
+<hr>
+
+## Objetivo informe avance 4:<a name="objetivo4"></a>
+
+El objetivo para esta cuarta entrega es lograr la automatización de los test exploratorios que hasta el momento eran manuales. Los test exploratorios para ambos bugs resueltos y las dos nuevas funcionalidades deben de automatizarse utilizando Selenium como herramienta.
+A su vez, se propone como meta confeccionar y analizar ciertas métricas utilizadas en el contexto de DevOps según nuestro proceso de ingeniería.
+
+
+## Backlog:<a name="backlog4"></a>
+| Tarea                                                                                                                                 | Prioridad/Severidad | Detalles                                                                            |
+|---------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------------------------------------|
+|Integrar test de Selenium al pipeline | Media | Quedó pendiente durante la entrega debido a una decisión tomada por el equipo  |
 | Excepción controlada al ingresar un precio null pero no personalizadamente, por lo que el mensaje de error es una excepción genérica. | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
 | Mejora a futuro, mostrar el snack comprado junto al ticket y el total sumado de dicha compra.                                         | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
 | Mejorar estilos del front                                                                                                             | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
