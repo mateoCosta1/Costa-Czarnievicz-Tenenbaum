@@ -22,7 +22,8 @@ Grupo N6A
 Informe avance 1 - 11 de Abril 2023 <br>
 Informe avance 2 - 18 de Abril 2023 <br>
 Informe avance 3 - 12 de Mayo 2023 <br>
-Informe avance 4 - 23 de Mayo 2023
+Informe avance 4 - 23 de Mayo 2023 <br>
+Informe Avance Final - 2 de Junio de 2023
 
 
 
@@ -33,6 +34,8 @@ Informe avance 4 - 23 de Mayo 2023
 [Informe Avance 2](#informe-avance-2)
 [Informe Avance 3](#informe-avance-3)
 [Informe Avance 4](#informe-avance-4)
+[Informe Avance Final](#informe-avance-final)
+
 
 # Informe Avance 1:<a name="avance1"></a>
 
@@ -245,3 +248,9 @@ A su vez, se propone como meta confeccionar y analizar ciertas métricas utiliza
 | Excepción controlada al ingresar un precio null pero no personalizadamente, por lo que el mensaje de error es una excepción genérica. | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
 | Mejora a futuro, mostrar el snack comprado junto al ticket y el total sumado de dicha compra.                                         | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
 | Mejorar estilos del front                                                                                                             | Baja                | Quedó pendiente, luego de la review con el PO.                                      |
+
+# Informe Avance Final:<a name="avanceFinal"></a>
+
+A continuación se adjunta el link que lleva al documento oficial correspondiente al informe avance final del obligatorio.
+Cabe destacar que sin incluir la carátula, índice ni anexos el documento contiene 13 páginas, lo que cumple con el requisito de no exederse de las 15 páginas.
+[Link al pdf:](/InformeAvanceFinal/Informe%20avance%20final.pdf)
